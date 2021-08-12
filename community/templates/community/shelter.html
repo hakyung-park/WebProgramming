@@ -52,8 +52,8 @@
     ================================================== -->
     <div class="container search-page">
         <div class="search-title container">
-            <h1>유기 동물 보호소 검색</h1>
-            <p>주소를 입력하면 주변 보호소를 알려드려요</p>
+            <h1>유기 동물 목록</h1>
+            <p></p>
         </div>
     </div>
     <!--/#Title-->
@@ -98,54 +98,102 @@
     <!--/list-->
 
 
+    {%  comment %}
+    key :
+    age careAddr careNm careTel chargeNm colorCd desertionNo filename happenDt
+    happenPlace kindCd neuterYn noticeEdt noticeNo noticeSdt officetel orgNm popfile processState sexCd specialMark weight
 
-        {{ df2.age }}
-        <body class="container"><</body>
-        <hr>
-        <div id="my_tab" class="tab-content">
-            <table>
-                <thead>
-                <tr>
-                    <th>나이</th>
-                    <th>위치</th>
-                    <th>보호소 번호</th>
-                    <th>동물 색상</th>
-                    <th>신고번호</th>
-{#                    <th>사진</th>#}
-                    <th>신고날짜</th>
-                    <th>신고 위치</th>
-                </tr>
-                </thead>
+    쓰는 컬럼:
+    age 나이 , careAddr 위치, careTel 보호소 번호, colorCd 색상 , desertionNo 신고번호, happenDt 신고 날짜, happenPlace  신고 위치
+  {%  endcomment %}
 
-                <tbody>
-                <tr>
-                    <td> {{ df2.age.value }}</td>
-                    <td> {{ df2.careAddr }}</td>
-                    <td> {{ df2.careTel }}</td>
-                    <br/>
-                    <td> {{ df2.colorCd }}</td>
-                    <br/>
-                    <td> {{ df2.desertionNo }}</td>
-                    <br/>
-{#                    <td><img style="height: 50px; width: 50px" src={{ df2.profile }}</td><br/>#}
-                    <td> {{ df2.happenDt }}</td>
-                    <br/>
-                    <td> {{ df2.happenPlace }}</td>
-                    <br/>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div id="my_tab" class="tab-content">
-            <div class="tab-pane fade show active" id="usus">
-                <p>
-                    {% comment %}
-                        {% for df in df2 %}
-                        {{df2.age}}<br/>
-                        {% endfor %}
-                    {% endcomment %}
-                </p>
-            </div>
-        </div>
+
+    {#    <body>#}
+    {#    <table>#}
+    {#        <thead>#}
+    {#        <tr>#}
+    {#            <th>아가 1</th>#}
+    {#            <th>아가 2</th>#}
+    {#            <th>아가 3</th>#}
+    {#        </tr>#}
+    {#        </thead>#}
+    {##}
+    {#        <tbody>#}
+    {#        {% for key,value in df2.items %}#}
+    {#            <tr>#}
+    {#                <td>{{ value.0 }}</td>#}
+    {#                <td>{{ value.1 }}</td>#}
+    {#                <td>{{ value.2 }}</td>#}
+    {#            </tr>#}
+    {#        {% endfor %}#}
+    {#        </tbody>#}
+    {#    </table>#}
+    {##}
+    {#    </body>#}
+
+
+    <body class="container"><</body>
+    <hr>
+    <div id="my_tab" class="tab-content">
+        <table>
+            <thead>
+            <tr>
+                <th>항목</th>
+                <th>아가 1</th>
+                <th>아가 2</th>
+                <th>아가 3</th>
+                <th>아가 4</th>
+                <th>아가 5</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+{#                <td>{{ '연령', '보호소 주소', '보호소 전화번호' }}</td>#}
+                {% for key,value in df2.items %}
+                    <td>{{ key }}</td>
+                    <td>{{ value.0 }}</td>
+                    <td>{{ value.1 }}</td>
+                    <td>{{ value.2 }}</td>
+                    <td>{{ value.3 }}</td>
+                    <td>{{ value.4 }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            {#                <thead>#}
+            {#                <tr>#}
+            {#                    <th>나이</th>#}
+            {#                    <th>위치</th>#}
+            {#                    <th>보호소 번호</th>#}
+            {#                    <th>동물 색상</th>#}
+            {#                    <th>신고번호</th>#}
+            {#                    <th>사진</th>#}
+            {#                    <th>신고날짜</th>#}
+            {#                    <th>신고 위치</th>#}
+            {#                </tr>#}
+            {#                </thead>#}
+            {##}
+            {#                <tbody>#}
+            {#                <tr>#}
+            {#                    <td> {{ df2.age.values }}</td>#}
+            {#                    <td> {{ df2.careAddr.values }}</td>#}
+            {#                    <td> {{ df2.careTel.values }}</td>#}
+            {#                    <br/>#}
+            {#                    <td> {{ df2.colorCd.values }}</td>#}
+            {#                    <br/>#}
+            {#                    <td> {{ df2.desertionNo.values }}</td>#}
+            {#                    <br/>#}
+            {#                    <td><img style="height: 50px; width: 50px" src={{ df2.profile }}</td><br/>#}
+            {#                    <td> {{ df2.happenDt.values }}</td>#}
+            {#                    <br/>#}
+            {#                    <td> {{ df2.happenPlace.values }}</td>#}
+            {#                    <br/>#}
+            {#                </tr>#}
+            {#                </tbody>#}
+        </table>
+    </div>
+    <div id="my_tab" class="tab-content">
+        <div class="tab-pane fade show active" id="usus"></div>
+    </div>
 
 {% endblock %}
